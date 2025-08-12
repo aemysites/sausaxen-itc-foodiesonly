@@ -4,6 +4,12 @@
   "lastCrawled": "https://foodiesonly.in/",
   "urls": [
     {
+      "url": "https://foodiesonly.in",
+      "source": "MANUAL",
+      "targetPath": "/",
+      "id": "b2c593f1aef38156b8afd8fcbf3a914b51a0336a"
+    },
+    {
       "url": "https://foodiesonly.in/about-us",
       "source": "SITEMAPS",
       "targetPath": "/about-us",
