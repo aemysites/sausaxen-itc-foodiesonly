@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2025 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,54 +9,27 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
-/**
- * A map of custom parser names to imported parser functions.
- *
- * eg.
- * {
- *   myParser: customParser1,
- * }
- */
-export const customParsers = {};
-
-/**
- * An array of custom page elements to parse.
- * The name is the parser name.
- * If the element is a string, it will be used as a selector to the element to parse.
- * If the element is not provided, the parser will be applied to the main element.
- *
- * eg.
- * [
- *   { name: 'myParser', element: 'selector' },
- * ]
- */
-export const customElements = [];
-
-/**
- * Custom transformers
- */
-export const customTransformers = {
-  inject: () => {
+/* eslint-disable no-console */
+(() => {
     const mainElement = document.querySelector('main.main.left-nav-column, main.main.all-three-column');
     if (mainElement) {
       mainElement.style.flexDirection = 'column';
-
+  
       // make all direct children span the full width
       Array.from(mainElement.children).forEach((child) => {
         child.style.width = '100%';
       });
     }
-
+  
     // remove slide-out librarian element if present
     document.getElementById('lcs_slide_out-11923')?.remove();
-
+  
     // remove offline chatwidget
     document.querySelector('[aria-label="Chat Widget"]')?.remove();
 
     // remove login popup container if present (e.g., on foodiesonly.in)
     document.querySelector('.login-popup-container')?.remove();
-
+  
     // selectors we always want removed
     const UNWANTED_SELECTORS = [
       '.left-nav',
@@ -82,5 +54,4 @@ export const customTransformers = {
       removeUnwanted();
     });
     observer.observe(document.body, { childList: true, subtree: true });
-  },
-};
+  })();
